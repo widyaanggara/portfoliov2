@@ -99,8 +99,8 @@ const techStack = {
     { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#38B2AC]" /> },
     { name: "Bootstrap", icon: <FaBootstrap className="text-[#7511f6]" /> },
     { name: "JavaScript", icon: <FaJsSquare className="text-[#F7DF1E]" /> },
-    { name: "HTML5", icon: <FaHtml5 className="text-[#E34F26]" /> },
-    { name: "CSS3", icon: <FaCss3Alt className="text-[#1572B6]" /> },
+    { name: "HTML", icon: <FaHtml5 className="text-[#E34F26]" /> },
+    { name: "CSS", icon: <FaCss3Alt className="text-[#1572B6]" /> },
   ],
   backend: [
     { name: "PHP", icon: <SiPhp className="text-[#777bb3]" /> },
