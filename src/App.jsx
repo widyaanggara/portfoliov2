@@ -157,7 +157,7 @@ function App() {
                   <p className="text-white/80 leading-relaxed mt-4 font-cascadia text-justify">
                     Hi, I’m Widya Anggara, a junior web developer passionate about building responsive and engaging websites. I’m eager to keep learning, growing, and contributing to meaningful digital projects that make an impact.
                   </p>
-                  <div className="my-6 bg-slate-900/50 border-l-4 border-[#00ffdc] p-4 rounded-r-lg italic text-white/70 font-cascadia">
+                  <div className="my-6 bg-slate-900/50 border-l-4 border-[#00ffdc] p-4 rounded-r-lg italic text-white/70 font-cascadia text-left">
                     "Trying to be better than yesterday."
                   </div>
                   <div className="flex flex-row sm:flex-row gap-4 mt-8 justify-center md:justify-start items-center">
