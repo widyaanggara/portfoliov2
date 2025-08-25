@@ -90,7 +90,7 @@ const dummyProjects = [
   },
   {
     title: "Halo Bali UI",
-    description: "Halo Bali is a UI/UX design concept for an online travel booking application, enabling users to easily plan trips, book accommodations, and find local guides for authentic experiences.",
+    description: "Halo Bali is a UI/UX design concept for travel booking, helping users plan trips, book stays, and connect with local guides.",
     tech: ["Figma"],
     link: "https://www.figma.com/proto/uADXDjXBhJDG6RrMnWJikD/BALIGIVATION?node-id=1-25&t=lAwpKm1szS3TFO7p-1",
     image: UIUX2,
