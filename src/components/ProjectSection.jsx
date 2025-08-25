@@ -25,6 +25,7 @@ import Portfolio4 from '../assets/Project/portfolio4.png'
 import Portfolio5 from '../assets/Project/portfolio5.jpg'
 import Portfolio6 from '../assets/Project/portfolio6.png'
 import UIUX1 from '../assets/Project/uiux1.png'
+import UIUX2 from '../assets/Project/uiux2.png'
 
 
 // ===================================
@@ -83,8 +84,16 @@ const dummyProjects = [
     title: "Vitlife UI",
     description: "Vitlife is a UI/UX design concept for a nutrition tracker, helping users monitor meals, calories, nutrients, and health habits efficiently.",
     tech: ["Figma"],
-    link: "#",
+    link: "https://www.figma.com/proto/mf8k3ftOuq2QLJiwVDJJvG/VitLife-SITEFEST?node-id=126-599&t=EsZbuzhZfNgsMFGB-1",
     image: UIUX1,
+    category: "3D Design",
+  },
+  {
+    title: "Halo Bali UI",
+    description: "Halo Bali is a UI/UX design concept for an online travel booking application, enabling users to easily plan trips, book accommodations, and find local guides for authentic experiences.",
+    tech: ["Figma"],
+    link: "https://www.figma.com/proto/uADXDjXBhJDG6RrMnWJikD/BALIGIVATION?node-id=1-25&t=lAwpKm1szS3TFO7p-1",
+    image: UIUX2,
     category: "3D Design",
   },
 ];
