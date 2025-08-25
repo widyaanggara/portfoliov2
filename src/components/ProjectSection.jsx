@@ -26,6 +26,7 @@ import Portfolio5 from '../assets/Project/portfolio5.jpg'
 import Portfolio6 from '../assets/Project/portfolio6.png'
 import UIUX1 from '../assets/Project/uiux1.png'
 import UIUX2 from '../assets/Project/uiux2.png'
+import UIUX3 from '../assets/Project/uiux3.png'
 
 
 // ===================================
@@ -94,6 +95,14 @@ const dummyProjects = [
     tech: ["Figma"],
     link: "https://www.figma.com/proto/uADXDjXBhJDG6RrMnWJikD/BALIGIVATION?node-id=1-25&t=lAwpKm1szS3TFO7p-1",
     image: UIUX2,
+    category: "3D Design",
+  },
+  {
+    title: "Codify UI",
+    description: "Codify is a UI/UX design concept for online programming courses, featuring interactive learning with private teachers.",
+    tech: ["Figma"],
+    link: "https://www.figma.com/proto/66KG18vKbaIc5LmnJvkjtQ/CODIFY-BBT?node-id=324-64&t=YUamRfiStzW2wGM5-1",
+    image: UIUX3,
     category: "3D Design",
   },
 ];
