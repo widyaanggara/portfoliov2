@@ -60,7 +60,7 @@ const dummyProjects = [
   {
     title: "Dev Skills",
     description: "DevSkills is an online programming platform with courses, user/admin management, and tracking.",
-    tech: ["PHP", "TailwindCSS"],
+    tech: ["PHP", "TailwindCSS", "MySQL"],
     link: "https://github.com/widyaanggara/devskills",
     image: Portfolio4,
     category: "Web/Apps",
@@ -68,7 +68,7 @@ const dummyProjects = [
   {
     title: "Trave Website",
     description: "Trave is a Laravel-based website offering efficient navigation, content management, and interactive features.",
-    tech: ["Laravel", "TailwindCSS"],
+    tech: ["Laravel", "TailwindCSS", "MySQL"],
     link: "https://github.com/widyaanggara/Trave",
     image: Portfolio5,
     category: "Web/Apps",
@@ -141,7 +141,7 @@ const techStack = {
 // ===================================
 const ProjectCard = ({ project }) => {
   const techIcons = {
-    "Next.js": <SiNextdotjs />, "React": <FaReact />, "TailwindCSS": <SiTailwindcss />, "Wordpress": <FaWordpress />, "HTML": <FaHtml5 />, "CSS": <FaCss3Alt />, "JS": <FaJsSquare />, "Bootstrap": <FaBootstrap />, "Vite": <TbBrandVite />, "PHP": <SiPhp />, "Laravel": <TbBrandLaravel />,
+    "Next.js": <SiNextdotjs />, "React": <FaReact />, "TailwindCSS": <SiTailwindcss />, "Wordpress": <FaWordpress />, "HTML": <FaHtml5 />, "CSS": <FaCss3Alt />, "JS": <FaJsSquare />, "Bootstrap": <FaBootstrap />, "Vite": <TbBrandVite />, "PHP": <SiPhp />, "Laravel": <TbBrandLaravel />, "MySQL": <SiMysql />,
     "Framer Motion": "💫", "Node.js": <FaNodeJs />, "Express": <SiExpress />, 
     "MongoDB": <SiMongodb />, "JWT": "🔑", "Figma": <FaFigma />, "Storybook": "📚"
   };
