@@ -42,19 +42,27 @@ const dummyProjects = [
     category: "Web/Apps",
   },
   {
-    title: "Da'Coffee Website",
-    description: "Website showcasing coffee products, reviews, and details, emphasizing quality and uniqueness.",
-    tech: ["HTML", "CSS", "JS", "Bootstrap"],
-    link: "https://github.com/widyaanggara/coffee-shop-website",
-    image: Portfolio2,
+    title: "Spotify Clone",
+    description: "Spotify Clone is a React.js web application replicating Spotify’s streaming features, allowing users to browse, play, and manage playlists.",
+    tech: ["React", "TailwindCSS"],
+    link: "https://github.com/widyaanggara/Trave",
+    image: Portfolio6,
     category: "Web/Apps",
   },
-  {
+    {
     title: "Gemini Clone",
     description: "Gemini Clone website built with React.js and Vite, featuring live Q&A interactions.",
     tech: ["React", "Vite", "TailwindCSS"],
     link: "https://github.com/widyaanggara/gemini-clone",
     image: Portfolio3,
+    category: "Web/Apps",
+  },
+  {
+    title: "Da'Coffee Website",
+    description: "Website showcasing coffee products, reviews, and details, emphasizing quality and uniqueness.",
+    tech: ["HTML", "CSS", "JS", "Bootstrap"],
+    link: "https://github.com/widyaanggara/coffee-shop-website",
+    image: Portfolio2,
     category: "Web/Apps",
   },
   {
@@ -71,14 +79,6 @@ const dummyProjects = [
     tech: ["Laravel", "TailwindCSS", "MySQL"],
     link: "https://github.com/widyaanggara/Trave",
     image: Portfolio5,
-    category: "Web/Apps",
-  },
-  {
-    title: "Spotify Clone",
-    description: "Spotify Clone is a React.js web application replicating Spotify’s music streaming features, allowing users to browse, play, and manage playlists interactively.",
-    tech: ["React", "TailwindCSS"],
-    link: "https://github.com/widyaanggara/Trave",
-    image: Portfolio6,
     category: "Web/Apps",
   },
   {
