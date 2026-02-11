@@ -6,7 +6,7 @@ const socials = [
     { icon: <FaGithub />, href: 'https://github.com/widyaanggara', label: 'GitHub' },
     { icon: <FaLinkedin />, href: 'https://www.linkedin.com/in/widyanggara/', label: 'LinkedIn' },
     { icon: <FaInstagram />, href: 'https://www.instagram.com/widyanggaraa/', label: 'Instagram' },
-    { icon: <FaEnvelope />, href: 'mailto:widyaanggara@gmail.com', label: 'Email' },
+    { icon: <FaEnvelope />, href: 'mailto:widyanggaraa005@gmail.com', label: 'Email' },
 ];
 
 function ContactSection() {
@@ -56,11 +56,11 @@ function ContactSection() {
                     className="mb-12"
                 >
                     <a
-                        href="mailto:widyaanggara@gmail.com"
+                        href="mailto:widyanggaraa005@gmail.com"
                         className="group inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-gradient-to-r from-cyan-600 to-emerald-600 hover:from-cyan-500 hover:to-emerald-500 text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-cyan-500/25 hover:scale-105"
                     >
                         <FaEnvelope className="text-lg" />
-                        widyaanggara@gmail.com
+                        widyanggaraa005@gmail.com
                     </a>
                 </motion.div>
 
@@ -70,7 +70,7 @@ function ContactSection() {
                     whileInView={{ opacity: 1, scaleX: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="w-16 h-px bg-slate-700 mx-auto mb-10"
+                    className="w-24 h-px bg-slate-700 mx-auto mb-8"
                 />
 
                 {/* Social Icons */}

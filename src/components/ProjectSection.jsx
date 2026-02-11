@@ -139,7 +139,7 @@ const techStack = {
 // ===================================
 // KOMPONEN KARTU PROYEK
 // ===================================
-const ProjectCard = ({ project, index, visible }) => {
+const ProjectCard = ({ project, index }) => {
   const techIcons = {
     "Next.js": <SiNextdotjs />, "React": <FaReact />, "TailwindCSS": <SiTailwindcss />, "Wordpress": <FaWordpress />, "HTML": <FaHtml5 />, "CSS": <FaCss3Alt />, "JS": <FaJsSquare />, "Bootstrap": <FaBootstrap />, "Vite": <TbBrandVite />, "PHP": <SiPhp />, "Laravel": <TbBrandLaravel />, "MySQL": <SiMysql />,
     "Framer Motion": "💫", "Node.js": <FaNodeJs />, "Express": <SiExpress />,
@@ -149,18 +149,8 @@ const ProjectCard = ({ project, index, visible }) => {
   return (
     <a
       href={project.link} target="_blank" rel="noopener noreferrer"
-      className="group relative rounded-2xl overflow-hidden cursor-pointer border border-slate-800/60 hover:border-cyan-500/40 hover:shadow-lg hover:shadow-cyan-500/20"
-      style={{
-        height: visible ? '' : '0',
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'scale(1) translateY(0)' : 'scale(0.95) translateY(20px)',
-        marginTop: visible ? '' : '0',
-        marginBottom: visible ? '' : '0',
-        padding: visible ? '' : '0',
-        overflow: 'hidden',
-        transition: `opacity 0.3s ease ${index * 0.05}s, transform 0.3s ease ${index * 0.05}s, height 0.3s ease, margin 0.3s ease`,
-        minHeight: visible ? '16rem' : '0',
-      }}
+      className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer border border-slate-800/60 hover:border-cyan-500/40 hover:shadow-lg hover:shadow-cyan-500/20 project-card-enter"
+      style={{ animationDelay: `${index * 0.05}s` }}
     >
       {/* Project Image */}
       <img
@@ -198,6 +188,22 @@ const ProjectCard = ({ project, index, visible }) => {
     </a>
   );
 };
+
+// CSS for card entrance animation
+const cardAnimStyle = document.createElement('style');
+cardAnimStyle.textContent = `
+  @keyframes projectCardEnter {
+    from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .project-card-enter {
+    animation: projectCardEnter 0.3s ease both;
+  }
+`;
+if (!document.querySelector('#project-card-anim')) {
+  cardAnimStyle.id = 'project-card-anim';
+  document.head.appendChild(cardAnimStyle);
+}
 
 // ===================================
 // KOMPONEN UTAMA SECTION PROJECT
@@ -309,12 +315,12 @@ function ProjectSection() {
                     <button className={`cursor-pointer px-5 py-2 rounded-full font-semibold transition-all duration-200 border ${projectCategory === '3D Design' ? 'bg-cyan-700/80 text-white border-cyan-400 shadow-lg' : 'bg-slate-900/60 text-cyan-200 border-slate-700 hover:bg-cyan-800/40 hover:text-white'}`} onClick={() => setProjectCategory('3D Design')}>UI/UX Design</button>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredProjects.map((p, i) => (
-                      <ProjectCard key={`${projectCategory}-${p.title}`} project={p} index={i} visible={i < visibleProjectsCount} />
+                    {filteredProjects.slice(0, visibleProjectsCount).map((p, i) => (
+                      <ProjectCard key={`${projectCategory}-${p.title}`} project={p} index={i} />
                     ))}
                   </div>
                   {filteredProjects.length > initialCount && (
-                    <div className="flex justify-center mt-0 md:mt-6">
+                    <div className="flex justify-center mt-12">
                       {visibleProjectsCount < filteredProjects.length ? (
                         <motion.button
                           onClick={handleShowMore}
