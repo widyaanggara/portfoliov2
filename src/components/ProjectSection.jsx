@@ -139,7 +139,7 @@ const techStack = {
 // ===================================
 // KOMPONEN KARTU PROYEK
 // ===================================
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({ project, index, visible }) => {
   const techIcons = {
     "Next.js": <SiNextdotjs />, "React": <FaReact />, "TailwindCSS": <SiTailwindcss />, "Wordpress": <FaWordpress />, "HTML": <FaHtml5 />, "CSS": <FaCss3Alt />, "JS": <FaJsSquare />, "Bootstrap": <FaBootstrap />, "Vite": <TbBrandVite />, "PHP": <SiPhp />, "Laravel": <TbBrandLaravel />, "MySQL": <SiMysql />,
     "Framer Motion": "💫", "Node.js": <FaNodeJs />, "Express": <SiExpress />,
@@ -147,37 +147,55 @@ const ProjectCard = ({ project, index }) => {
   };
 
   return (
-    <motion.a
-      layout
-      initial={{ opacity: 0, y: 30, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: -20, scale: 0.95 }}
-      transition={{ duration: 0.2, delay: index * 0.05 }}
+    <a
       href={project.link} target="_blank" rel="noopener noreferrer"
-      className="group relative h-64 sm:h-72 rounded-2xl overflow-hidden transition-shadow duration-300 hover:shadow-lg hover:shadow-cyan-500/30"
-      style={{ background: `url('${project.image}') center/cover no-repeat`, cursor: 'pointer' }}
+      className="group relative rounded-2xl overflow-hidden cursor-pointer border border-slate-800/60 hover:border-cyan-500/40 hover:shadow-lg hover:shadow-cyan-500/20"
+      style={{
+        height: visible ? '' : '0',
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'scale(1) translateY(0)' : 'scale(0.95) translateY(20px)',
+        marginTop: visible ? '' : '0',
+        marginBottom: visible ? '' : '0',
+        padding: visible ? '' : '0',
+        overflow: 'hidden',
+        transition: `opacity 0.3s ease ${index * 0.05}s, transform 0.3s ease ${index * 0.05}s, height 0.3s ease, margin 0.3s ease`,
+        minHeight: visible ? '16rem' : '0',
+      }}
     >
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-transparent"></div>
-      <div className="absolute inset-0 bg-black/50 group-hover:bg-black/60 transition-colors duration-300 flex flex-col justify-between p-4 sm:p-6 text-white">
-        <div>
+      {/* Project Image */}
+      <img
+        src={project.image}
+        alt={project.title}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+      />
+
+      {/* Default state: subtle bottom gradient with title only */}
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-300 group-hover:opacity-0"></div>
+      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 transition-opacity duration-300 group-hover:opacity-0">
+        <h3 className="text-lg sm:text-xl font-bold text-white drop-shadow-lg">{project.title}</h3>
+      </div>
+
+      {/* Hover state: full overlay with info */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-4 sm:p-6 text-white">
+        <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
           <h3 className="text-lg sm:text-xl font-bold text-cyan-300">{project.title}</h3>
-          <p className="text-slate-300 mt-2 text-xs sm:text-sm leading-relaxed">{project.description}</p>
-        </div>
-        <div className="flex items-end justify-between">
-          <div className="flex flex-wrap gap-2 mt-4">
-            {project.tech.map((t, i) => (
-              <span key={i} className="flex items-center gap-1 text-xs font-mono px-2 py-1 rounded-full bg-cyan-900/70 text-cyan-200 border border-cyan-800/30 backdrop-blur-sm">
-                {techIcons?.[t] || t}
-              </span>
-            ))}
+          <p className="text-slate-300 mt-2 text-xs sm:text-sm leading-relaxed line-clamp-3">{project.description}</p>
+          <div className="flex items-end justify-between mt-3">
+            <div className="flex flex-wrap gap-1.5">
+              {project.tech.map((t, i) => (
+                <span key={i} className="flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-full bg-cyan-900/70 text-cyan-200 border border-cyan-800/30 backdrop-blur-sm">
+                  {techIcons?.[t] || t}
+                </span>
+              ))}
+            </div>
+            <FaExternalLinkAlt className="text-cyan-300 text-sm flex-shrink-0 ml-2" />
           </div>
-          <FaExternalLinkAlt className="text-slate-300 group-hover:text-cyan-200 transition-colors duration-300" />
         </div>
       </div>
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      <div className="absolute inset-0 rounded-2xl border border-cyan-300/10 pointer-events-none"></div>
-    </motion.a>
+
+      {/* Hover glow border */}
+      <div className="absolute inset-0 rounded-2xl border border-cyan-300/0 group-hover:border-cyan-300/20 pointer-events-none transition-colors duration-300"></div>
+    </a>
   );
 };
 
@@ -290,19 +308,11 @@ function ProjectSection() {
                     <button className={`cursor-pointer px-5 py-2 rounded-full font-semibold transition-all duration-200 border ${projectCategory === 'Web/Apps' ? 'bg-cyan-700/80 text-white border-cyan-400 shadow-lg' : 'bg-slate-900/60 text-cyan-200 border-slate-700 hover:bg-cyan-800/40 hover:text-white'}`} onClick={() => setProjectCategory('Web/Apps')}>Web/Apps</button>
                     <button className={`cursor-pointer px-5 py-2 rounded-full font-semibold transition-all duration-200 border ${projectCategory === '3D Design' ? 'bg-cyan-700/80 text-white border-cyan-400 shadow-lg' : 'bg-slate-900/60 text-cyan-200 border-slate-700 hover:bg-cyan-800/40 hover:text-white'}`} onClick={() => setProjectCategory('3D Design')}>UI/UX Design</button>
                   </div>
-                  <motion.div
-                    key={projectCategory}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <AnimatePresence mode="popLayout">
-                      {filteredProjects.slice(0, visibleProjectsCount).map((p, i) => (
-                        <ProjectCard key={p.title} project={p} index={i} />
-                      ))}
-                    </AnimatePresence>
-                  </motion.div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {filteredProjects.map((p, i) => (
+                      <ProjectCard key={`${projectCategory}-${p.title}`} project={p} index={i} visible={i < visibleProjectsCount} />
+                    ))}
+                  </div>
                   {filteredProjects.length > initialCount && (
                     <div className="flex justify-center mt-12">
                       {visibleProjectsCount < filteredProjects.length ? (
