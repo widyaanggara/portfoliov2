@@ -1,16 +1,16 @@
 // src/components/ProjectSection.jsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  FaExternalLinkAlt, FaReact, FaNodeJs, FaHtml5, FaCss3Alt, 
+import {
+  FaExternalLinkAlt, FaReact, FaNodeJs, FaHtml5, FaCss3Alt,
   FaJsSquare, FaTools, FaFigma,
   FaBootstrap,
   FaGitAlt,
   FaWordpress
 } from 'react-icons/fa';
-import { 
-  SiTailwindcss, SiNextdotjs, SiVercel, SiMongodb, 
-  SiExpress, SiPostgresql, 
+import {
+  SiTailwindcss, SiNextdotjs, SiVercel, SiMongodb,
+  SiExpress, SiPostgresql,
   SiPhp,
   SiMysql
 } from 'react-icons/si';
@@ -49,7 +49,7 @@ const dummyProjects = [
     image: Portfolio6,
     category: "Web/Apps",
   },
-    {
+  {
     title: "Gemini Clone",
     description: "Gemini Clone website built with React.js and Vite, featuring live Q&A interactions.",
     tech: ["React", "Vite", "TailwindCSS"],
@@ -139,44 +139,44 @@ const techStack = {
 // ===================================
 // KOMPONEN KARTU PROYEK
 // ===================================
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, index }) => {
   const techIcons = {
     "Next.js": <SiNextdotjs />, "React": <FaReact />, "TailwindCSS": <SiTailwindcss />, "Wordpress": <FaWordpress />, "HTML": <FaHtml5 />, "CSS": <FaCss3Alt />, "JS": <FaJsSquare />, "Bootstrap": <FaBootstrap />, "Vite": <TbBrandVite />, "PHP": <SiPhp />, "Laravel": <TbBrandLaravel />, "MySQL": <SiMysql />,
-    "Framer Motion": "💫", "Node.js": <FaNodeJs />, "Express": <SiExpress />, 
+    "Framer Motion": "💫", "Node.js": <FaNodeJs />, "Express": <SiExpress />,
     "MongoDB": <SiMongodb />, "JWT": "🔑", "Figma": <FaFigma />, "Storybook": "📚"
   };
 
   return (
-    <motion.a 
+    <motion.a
       layout
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.4 }}
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -20, scale: 0.95 }}
+      transition={{ duration: 0.2, delay: index * 0.05 }}
       href={project.link} target="_blank" rel="noopener noreferrer"
-        className="group relative h-64 sm:h-72 rounded-2xl overflow-hidden transition-shadow duration-300 hover:shadow-lg hover:shadow-cyan-500/30"
-        style={{ background: `url('${project.image}') center/cover no-repeat`, cursor: 'pointer' }}
+      className="group relative h-64 sm:h-72 rounded-2xl overflow-hidden transition-shadow duration-300 hover:shadow-lg hover:shadow-cyan-500/30"
+      style={{ background: `url('${project.image}') center/cover no-repeat`, cursor: 'pointer' }}
     >
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-transparent"></div>
-        <div className="absolute inset-0 bg-black/50 group-hover:bg-black/60 transition-colors duration-300 flex flex-col justify-between p-4 sm:p-6 text-white">
+      <div className="absolute inset-0 bg-black/50 group-hover:bg-black/60 transition-colors duration-300 flex flex-col justify-between p-4 sm:p-6 text-white">
         <div>
-            <h3 className="text-lg sm:text-xl font-bold text-cyan-300">{project.title}</h3>
-            <p className="text-slate-300 mt-2 text-xs sm:text-sm leading-relaxed">{project.description}</p>
+          <h3 className="text-lg sm:text-xl font-bold text-cyan-300">{project.title}</h3>
+          <p className="text-slate-300 mt-2 text-xs sm:text-sm leading-relaxed">{project.description}</p>
         </div>
         <div className="flex items-end justify-between">
-            <div className="flex flex-wrap gap-2 mt-4">
+          <div className="flex flex-wrap gap-2 mt-4">
             {project.tech.map((t, i) => (
-                <span key={i} className="flex items-center gap-1 text-xs font-mono px-2 py-1 rounded-full bg-cyan-900/70 text-cyan-200 border border-cyan-800/30 backdrop-blur-sm">
+              <span key={i} className="flex items-center gap-1 text-xs font-mono px-2 py-1 rounded-full bg-cyan-900/70 text-cyan-200 border border-cyan-800/30 backdrop-blur-sm">
                 {techIcons?.[t] || t}
-                </span>
+              </span>
             ))}
-            </div>
-            <FaExternalLinkAlt className="text-slate-300 group-hover:text-cyan-200 transition-colors duration-300" />
+          </div>
+          <FaExternalLinkAlt className="text-slate-300 group-hover:text-cyan-200 transition-colors duration-300" />
         </div>
-        </div>
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div className="absolute inset-0 rounded-2xl border border-cyan-300/10 pointer-events-none"></div>
+      </div>
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="absolute inset-0 rounded-2xl border border-cyan-300/10 pointer-events-none"></div>
     </motion.a>
   );
 };
@@ -189,9 +189,26 @@ function ProjectSection() {
   const [projectCategory, setProjectCategory] = useState('Web/Apps');
   const { hideNavbar, showNavbar } = useNavbar();
 
-  // Show More/Less Projects
-  const INITIAL_PROJECTS_TO_SHOW = 3;
-  const [visibleProjectsCount, setVisibleProjectsCount] = useState(INITIAL_PROJECTS_TO_SHOW);
+  // Show More/Less Projects — show 4 on iPad/tablet (768px–1023px), 3 on others
+  const [isTablet, setIsTablet] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(min-width: 768px) and (max-width: 1023px)').matches;
+  });
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px) and (max-width: 1023px)');
+    const handler = (e) => setIsTablet(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  const initialCount = isTablet ? 2 : 3;
+  const [visibleProjectsCount, setVisibleProjectsCount] = useState(initialCount);
+
+  // Reset visible count when breakpoint changes
+  useEffect(() => {
+    setVisibleProjectsCount(initialCount);
+  }, [initialCount]);
 
   useEffect(() => {
     return () => showNavbar();
@@ -204,8 +221,13 @@ function ProjectSection() {
 
   const filteredProjects = dummyProjects.filter(p => p.category === projectCategory);
 
+  // Reset visible count when switching category
+  useEffect(() => {
+    setVisibleProjectsCount(initialCount);
+  }, [projectCategory]);
+
   const handleShowMore = () => setVisibleProjectsCount(filteredProjects.length);
-  const handleShowLess = () => setVisibleProjectsCount(INITIAL_PROJECTS_TO_SHOW);
+  const handleShowLess = () => setVisibleProjectsCount(initialCount);
 
   return (
     <section id="project" className="py-20">
@@ -217,8 +239,8 @@ function ProjectSection() {
         className="text-center mb-20"
       >
         <h2 className="text-4xl font-bold font-moderniz">
-            <span style={{color: "#00ffdc"}}>PORTFOLIO</span>{' '}
-            <span style={{ color: "#fff" }}>SHOWCASE</span>
+          <span style={{ color: "#00ffdc" }}>PORTFOLIO</span>{' '}
+          <span style={{ color: "#fff" }}>SHOWCASE</span>
         </h2>
       </motion.div>
 
@@ -268,10 +290,20 @@ function ProjectSection() {
                     <button className={`cursor-pointer px-5 py-2 rounded-full font-semibold transition-all duration-200 border ${projectCategory === 'Web/Apps' ? 'bg-cyan-700/80 text-white border-cyan-400 shadow-lg' : 'bg-slate-900/60 text-cyan-200 border-slate-700 hover:bg-cyan-800/40 hover:text-white'}`} onClick={() => setProjectCategory('Web/Apps')}>Web/Apps</button>
                     <button className={`cursor-pointer px-5 py-2 rounded-full font-semibold transition-all duration-200 border ${projectCategory === '3D Design' ? 'bg-cyan-700/80 text-white border-cyan-400 shadow-lg' : 'bg-slate-900/60 text-cyan-200 border-slate-700 hover:bg-cyan-800/40 hover:text-white'}`} onClick={() => setProjectCategory('3D Design')}>UI/UX Design</button>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredProjects.slice(0, visibleProjectsCount).map((p, i) => <ProjectCard key={i} project={p} />)}
-                  </div>
-                  {filteredProjects.length > INITIAL_PROJECTS_TO_SHOW && (
+                  <motion.div
+                    key={projectCategory}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <AnimatePresence mode="popLayout">
+                      {filteredProjects.slice(0, visibleProjectsCount).map((p, i) => (
+                        <ProjectCard key={p.title} project={p} index={i} />
+                      ))}
+                    </AnimatePresence>
+                  </motion.div>
+                  {filteredProjects.length > initialCount && (
                     <div className="flex justify-center mt-12">
                       {visibleProjectsCount < filteredProjects.length ? (
                         <motion.button
