@@ -15,6 +15,7 @@ import Spline from '@splinetool/react-spline';
 import { ButtonMovingBorder } from './components/MovingButtonBorder';
 import CV from './assets/cv/CV_Anggara.pdf';
 import ProjectSection from './components/ProjectSection';
+import ContactSection from './components/ContactSection';
 
 function App() {
   // 1. State untuk mengontrol visibilitas aset 3D (default: aktif)
@@ -197,8 +198,10 @@ function App() {
             <ProjectSection />
           </section>
 
+          <ContactSection />
+
           {/* FOOTER */}
-          <footer className="py-8 text-center text-gray-400" id="contact">
+          <footer className="py-8 text-center text-gray-400">
             <div className="text-sm">© {new Date().getFullYear()} Widya Anggara. All rights reserved.</div>
           </footer>
 

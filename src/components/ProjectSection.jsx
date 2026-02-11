@@ -314,7 +314,7 @@ function ProjectSection() {
                     ))}
                   </div>
                   {filteredProjects.length > initialCount && (
-                    <div className="flex justify-center mt-12">
+                    <div className="flex justify-center mt-0 md:mt-6">
                       {visibleProjectsCount < filteredProjects.length ? (
                         <motion.button
                           onClick={handleShowMore}
