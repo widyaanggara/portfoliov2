@@ -132,7 +132,7 @@ const techStack = {
     { name: "Git & GitHub", icon: <FaGitAlt className="text-white" /> },
     { name: "Vercel", icon: <SiVercel className="text-white" /> },
     { name: "Figma", icon: <FaFigma className="text-[#F24E1E]" /> },
-    { name: "Tools Lain", icon: <FaTools className="text-gray-400" /> },
+    { name: "Other Tools", icon: <FaTools className="text-gray-400" /> },
   ],
 };
 
