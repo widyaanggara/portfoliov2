@@ -24,6 +24,9 @@ import Portfolio3 from '../assets/Project/portfolio3.png'
 import Portfolio4 from '../assets/Project/portfolio4.png'
 import Portfolio5 from '../assets/Project/portfolio5.jpg'
 import Portfolio6 from '../assets/Project/portfolio6.png'
+import Portfolio7 from '../assets/Project/portfolio7.png'
+import Portfolio8 from '../assets/Project/portfolio8.png'
+import Portfolio9 from '../assets/Project/portfolio9.png'
 import UIUX1 from '../assets/Project/uiux1.png'
 import UIUX2 from '../assets/Project/uiux2.png'
 import UIUX3 from '../assets/Project/uiux3.png'
@@ -34,11 +37,35 @@ import UIUX3 from '../assets/Project/uiux3.png'
 // ===================================
 const dummyProjects = [
   {
+    title: "Inbis INSTIKI",
+    description: "A business incubator website for INSTIKI, designed for collecting and managing IDEASI competition submissions.",
+    tech: ["Wordpress"],
+    link: "https://inbis.instiki.ac.id/",
+    image: Portfolio8,
+    category: "Web/Apps",
+  },
+  {
+    title: "Metemu Apps",
+    description: "A soulmate compatibility app based on Balinese cultural traditions, helping users find their ideal match.",
+    tech: ["Wordpress"],
+    link: "https://metemu.nusaheritage.id/",
+    image: Portfolio9,
+    category: "Web/Apps",
+  },
+  {
     title: "Amertha Sumita",
     description: "Amertha is a WordPress e-commerce site offering seamless browsing and checkout.",
     tech: ["Wordpress"],
     link: "https://amerthasumita.com/",
     image: Portfolio1,
+    category: "Web/Apps",
+  },
+  {
+    title: "Unitools",
+    description: "A universal tools platform featuring URL shortener, image converter, and image compressor in one place.",
+    tech: ["Wordpress"],
+    link: "https://universal-tools.vercel.app/",
+    image: Portfolio7,
     category: "Web/Apps",
   },
   {
@@ -149,14 +176,14 @@ const ProjectCard = ({ project, index }) => {
   return (
     <a
       href={project.link} target="_blank" rel="noopener noreferrer"
-      className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer border border-slate-800/60 hover:border-cyan-500/40 hover:shadow-lg hover:shadow-cyan-500/20 project-card-enter"
+      className="group relative aspect-[3/2] rounded-2xl overflow-hidden cursor-pointer border border-slate-800/60 hover:border-cyan-500/40 hover:shadow-lg hover:shadow-cyan-500/20 project-card-enter"
       style={{ animationDelay: `${index * 0.05}s` }}
     >
       {/* Project Image */}
       <img
         src={project.image}
         alt={project.title}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
       />
 
       {/* Default state: subtle bottom gradient with title only */}
