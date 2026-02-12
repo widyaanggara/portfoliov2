@@ -14,6 +14,10 @@ import {
   SiPhp,
   SiMysql
 } from 'react-icons/si';
+import {
+  RiFirebaseLine, RiNextjsLine, RiSupabaseLine
+
+} from "react-icons/ri";
 import { PiCodeBold } from "react-icons/pi";
 import { LiaLayerGroupSolid } from "react-icons/lia";
 import { useNavbar } from '../contexts/NavbarContext';
@@ -39,7 +43,7 @@ const dummyProjects = [
   {
     title: "Inbis INSTIKI",
     description: "A business incubator website for INSTIKI, designed for collecting and managing IDEASI competition submissions.",
-    tech: ["Wordpress"],
+    tech: ["Laravel", "TailwindCSS", "MySQL"],
     link: "https://inbis.instiki.ac.id/",
     image: Portfolio8,
     category: "Web/Apps",
@@ -47,7 +51,7 @@ const dummyProjects = [
   {
     title: "Metemu Apps",
     description: "A soulmate compatibility app based on Balinese cultural traditions, helping users find their ideal match.",
-    tech: ["Wordpress"],
+    tech: ["Nextjs", "TailwindCSS", "Firebase"],
     link: "https://metemu.nusaheritage.id/",
     image: Portfolio9,
     category: "Web/Apps",
@@ -63,7 +67,7 @@ const dummyProjects = [
   {
     title: "Unitools",
     description: "A universal tools platform featuring URL shortener, image converter, and image compressor in one place.",
-    tech: ["Wordpress"],
+    tech: ["Nextjs", "TailwindCSS", "Supabase"],
     link: "https://universal-tools.vercel.app/",
     image: Portfolio7,
     category: "Web/Apps",
@@ -154,6 +158,7 @@ const techStack = {
   database: [
     { name: "MySQL", icon: <SiMysql className="text-[#086590]" /> },
     { name: "PostgreSQL", icon: <SiPostgresql className="text-[#336791]" /> },
+    { name: "Firebase", icon: <RiFirebaseLine className="text-[#ff8c00]" /> },
   ],
   tools: [
     { name: "Git & GitHub", icon: <FaGitAlt className="text-white" /> },
@@ -170,7 +175,7 @@ const ProjectCard = ({ project, index }) => {
   const techIcons = {
     "Next.js": <SiNextdotjs />, "React": <FaReact />, "TailwindCSS": <SiTailwindcss />, "Wordpress": <FaWordpress />, "HTML": <FaHtml5 />, "CSS": <FaCss3Alt />, "JS": <FaJsSquare />, "Bootstrap": <FaBootstrap />, "Vite": <TbBrandVite />, "PHP": <SiPhp />, "Laravel": <TbBrandLaravel />, "MySQL": <SiMysql />,
     "Framer Motion": "💫", "Node.js": <FaNodeJs />, "Express": <SiExpress />,
-    "MongoDB": <SiMongodb />, "JWT": "🔑", "Figma": <FaFigma />, "Storybook": "📚"
+    "MongoDB": <SiMongodb />, "JWT": "🔑", "Figma": <FaFigma />, "Storybook": "📚", "Firebase": <RiFirebaseLine />, "Nextjs": <RiNextjsLine />, "Supabase": <RiSupabaseLine />
   };
 
   return (
