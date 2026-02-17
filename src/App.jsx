@@ -42,7 +42,7 @@ function App() {
         </div>
 
         {/* 2. Tombol untuk mengaktifkan/menonaktifkan aset 3D */}
-        {/* <button
+        <button
           onClick={toggle3dAssets}
           title={`Toggle 3D Assets (${is3dEnabled ? 'On' : 'Off'})`}
           className={`fixed top-24 right-4 z-50 p-3 rounded-full border backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-110
@@ -52,7 +52,7 @@ function App() {
             }`}
         >
           <FaCube className="h-5 w-5" />
-        </button> */}
+        </button>
 
         {/* HEADER FIXED DI ATAS MAIN */}
         <Header />
