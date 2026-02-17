@@ -69,8 +69,8 @@ function App() {
                 <AnimatedGradientTextDemo />
               </motion.div>
               <motion.h1 initial={{ opacity: 0, x: -60 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }} className="text-3xl md:text-4xl font-moderniz font-bold leading-tight select-none" style={{ color: "#00ffdc", textShadow: `2px 2px 0 #000754, 4px 4px 0 #4079ff, 0 4px 12px #40ffaa, 0 1px 0 #00ffdc` }}>
-                WELCOME TO MY
-                <span style={{ display: 'block', marginTop: '0.4em' }}>PORTFOLIO</span>
+                WELCOME TO
+                <span style={{ display: 'block', marginTop: '0.4em' }}>MY PORTFOLIO</span>
               </motion.h1>
               <motion.div initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}>
                 <GradientText colors={["#40f2ffff", "#4079ff", "#40fffcff", "#4079ff", "#40f9ffff"]} animationSpeed={3} className="custom-class font-cascadia font-bold" />
