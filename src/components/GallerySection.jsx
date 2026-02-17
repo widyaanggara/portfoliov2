@@ -101,7 +101,7 @@ const GallerySection = () => {
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
                             transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 30 }}
-                            className="relative max-w-[65vw] max-h-[80vh] rounded-2xl overflow-hidden shadow-2xl"
+                            className="relative max-w-[90vw] max-h-[80vh] rounded-2xl overflow-hidden shadow-2xl"
                             style={{ width: 'fit-content' }}
                             onClick={(e) => e.stopPropagation()}
                         >
