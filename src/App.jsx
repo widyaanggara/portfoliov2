@@ -139,7 +139,7 @@ function App() {
                   transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
                   className="md:w-2/5 flex justify-center"
                 >
-                  <div className="w-[160%] -ml-[15%] h-[420px] md:h-[530px] flex items-center justify-center">
+                  <div className="w-[160%] md:-ml-[15%] h-[420px] md:h-[530px] flex items-center justify-center">
                     <Spline scene="https://prod.spline.design/FcZ66SFMX1YbF-0I/scene.splinecode" />
                   </div>
                 </motion.div>
