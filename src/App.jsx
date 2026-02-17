@@ -16,6 +16,8 @@ import { ButtonMovingBorder } from './components/MovingButtonBorder';
 import CV from './assets/cv/CV_Anggara.pdf';
 import ProjectSection from './components/ProjectSection';
 import ContactSection from './components/ContactSection';
+import GitHubActivity from './components/GitHubActivity';
+import GallerySection from './components/GallerySection';
 
 function App() {
   // 1. State untuk mengontrol visibilitas aset 3D (default: aktif)
@@ -45,7 +47,7 @@ function App() {
         <button
           onClick={toggle3dAssets}
           title={`Toggle 3D Assets (${is3dEnabled ? 'On' : 'Off'})`}
-          className={`fixed top-24 right-4 z-50 p-3 rounded-full border backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-110
+          className={`cursor-pointer fixed top-24 right-4 z-50 p-3 rounded-full border backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-110
             ${is3dEnabled
               ? 'bg-cyan-500/20 border-cyan-400 text-cyan-300 shadow-[0_0_12px_2px_#00ffdc80]'
               : 'bg-slate-800/50 border-slate-700 text-slate-400'
@@ -57,7 +59,7 @@ function App() {
         {/* HEADER FIXED DI ATAS MAIN */}
         <Header />
 
-        <main className="relative z-10 px-8 max-w-7xl mx-auto">
+        <main className="relative z-10 px-4 max-w-7xl mx-auto">
           {/* BAGIAN HERO */}
           <section id="home" className="flex flex-col md:flex-row items-center gap-10 pt-20 pb-16 lg:pt-0 lg:pb-20">
             {/* Blok Teks */}
@@ -192,11 +194,16 @@ function App() {
                 </div>
               ))}
             </motion.div>
+
+            {/* GitHub Activity */}
+            <GitHubActivity username="widyaanggara" />
           </section>
 
           <section id="projects" className="md:py-18">
             <ProjectSection />
           </section>
+
+          <GallerySection />
 
           <ContactSection />
 
