@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes } from 'react-icons/fa';
 
@@ -75,52 +76,55 @@ const GallerySection = () => {
                 </div>
             </div>
 
-            {/* Modal */}
-            <AnimatePresence>
-                {selectedItem && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-8"
-                        onClick={() => setSelectedItem(null)}
-                    >
-                        {/* Close Button */}
-                        <motion.button
-                            className="absolute top-6 right-6 z-20 text-white/50 hover:text-white transition-colors bg-black/20 p-2 rounded-full backdrop-blur-md"
-                            whileHover={{ scale: 1.1, rotate: 90 }}
-                            whileTap={{ scale: 0.9 }}
+            {/* Modal Portal - Moved to body to ensure it's above everything (navbar, defaults, etc.) */}
+            {createPortal(
+                <AnimatePresence>
+                    {selectedItem && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-8"
                             onClick={() => setSelectedItem(null)}
                         >
-                            <FaTimes size={32} />
-                        </motion.button>
+                            {/* Close Button */}
+                            <motion.button
+                                className="absolute top-6 right-6 z-[10000] text-white/50 hover:text-white transition-colors bg-black/20 p-2 rounded-full backdrop-blur-md"
+                                whileHover={{ scale: 1.1, rotate: 90 }}
+                                whileTap={{ scale: 0.9 }}
+                                onClick={() => setSelectedItem(null)}
+                            >
+                                <FaTimes size={32} />
+                            </motion.button>
 
-                        <motion.div
-                            initial={{ scale: 0.9, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0.9, opacity: 0 }}
-                            transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 30 }}
-                            className="relative max-w-[90vw] max-h-[80vh] rounded-2xl overflow-hidden shadow-2xl"
-                            style={{ width: 'fit-content' }}
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            <img
-                                src={selectedItem.image}
-                                alt={selectedItem.tagline}
-                                className="max-w-full max-h-[65vh] object-contain block"
-                            />
+                            <motion.div
+                                initial={{ scale: 0.9, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                exit={{ scale: 0.9, opacity: 0 }}
+                                transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 30 }}
+                                className="relative max-w-[90vw] max-h-[80vh] rounded-2xl overflow-hidden shadow-2xl"
+                                style={{ width: 'fit-content' }}
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                <img
+                                    src={selectedItem.image}
+                                    alt={selectedItem.tagline}
+                                    className="max-w-full max-h-[65vh] object-contain block"
+                                />
 
-                            {/* Modal Overlay / Tagline */}
-                            <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent pt-20">
-                                <h3 className="text-white text-sm md:text-lg font-semibold tracking-wide border-l-4 border-cyan-400 pl-4">
-                                    {selectedItem.tagline}
-                                </h3>
-                            </div>
+                                {/* Modal Overlay / Tagline */}
+                                <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent pt-20">
+                                    <h3 className="text-white text-sm md:text-lg font-semibold tracking-wide border-l-4 border-cyan-400 pl-4">
+                                        {selectedItem.tagline}
+                                    </h3>
+                                </div>
+                            </motion.div>
                         </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                    )}
+                </AnimatePresence>,
+                document.body
+            )}
         </section>
     );
 };
