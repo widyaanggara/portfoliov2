@@ -129,7 +129,7 @@ function App() {
               </p>
             </motion.div>
 
-            <div className="flex flex-col md:flex-row items-center justify-center">
+            <div className="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto px-4 w-full">
               {/* 3. Render Spline secara kondisional */}
               {is3dEnabled && (
                 <motion.div
@@ -137,9 +137,9 @@ function App() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
-                  className="md:w-1/3 flex justify-center"
+                  className="md:w-2/5 flex justify-center"
                 >
-                  <div className="w-full h-[420px] md:h-[530px] flex items-center justify-center">
+                  <div className="w-[160%] -ml-[15%] h-[420px] md:h-[530px] flex items-center justify-center">
                     <Spline scene="https://prod.spline.design/FcZ66SFMX1YbF-0I/scene.splinecode" />
                   </div>
                 </motion.div>
@@ -153,7 +153,7 @@ function App() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.9, ease: "easeOut" }}
                 // Lebar berubah jika 3D dinonaktifkan
-                className={`text-white text-center md:text-left px-4 md:px-8 transition-all duration-700 ${is3dEnabled ? 'md:w-1/2' : 'md:w-2/3'}`}
+                className={`text-white text-center md:text-left px-4 md:px-0 transition-all duration-700 ${is3dEnabled ? 'md:w-3/5' : 'md:w-full'}`}
               >
                 <p className="text-2xl text-gray-300 font-moderniz my" style={{ textShadow: "2px 2px 0 #000754, 4px 4px 0 #4079ff, 0 4px 12px #40ffaa, 0 1px 0 #00ffdc" }}>Hello, I'm</p>
                 <h3 className="text-4xl font-bold text-white my-2 font-moderniz" style={{ textShadow: "2px 2px 0 #000754, 4px 4px 0 #4079ff, 0 4px 12px #40ffaa, 0 1px 0 #00ffdc" }}>Widya Anggara</h3>
@@ -175,7 +175,7 @@ function App() {
             </div>
 
             {/* ... Statistik ... */}
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }} className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mt-10 px-4">
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }} className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-10 px-4">
               {stats.map((stat, index) => (
                 <div key={index} className="group relative p-6 rounded-2xl bg-gradient-to-br from-slate-900/80 to-slate-950/70 border border-slate-800/80 shadow-lg transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_0_24px_0px_#00ffdc50] cursor-pointer">
                   <div className="flex justify-between items-start">

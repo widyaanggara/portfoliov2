@@ -330,7 +330,7 @@ function ProjectSection() {
           </motion.div>
         </div>
 
-        <div className="rounded-3xl p-0 md:p-6 shadow-xl border border-slate-800/60 mx-auto max-w-7xl bg-clip-padding" style={{ background: "rgba(17, 24, 39, 0.55)", backdropFilter: "blur(16px)" }}>
+        <div className="rounded-3xl p-0 md:p-6 shadow-xl border border-slate-800/60 mx-auto max-w-6xl bg-clip-padding" style={{ background: "rgba(17, 24, 39, 0.55)", backdropFilter: "blur(16px)" }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}

@@ -218,7 +218,7 @@ const GitHubActivity = ({ username = 'widyaanggara' }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.6 }}
-            className="max-w-5xl mx-auto mt-16 px-4"
+            className="max-w-6xl mx-auto mt-16 px-4"
         >
             <div className="relative p-4 md:p-8 rounded-2xl bg-gradient-to-br from-slate-900/80 to-slate-950/70 border border-slate-800/80 shadow-lg">
                 {/* Header */}
@@ -306,36 +306,14 @@ const GitHubActivity = ({ username = 'widyaanggara' }) => {
                             </div>
                         </div>
                     ) : (
-                        <div style={{ minWidth: '750px' }}>
-                            {/* Month labels */}
-                            <div
-                                className="flex text-xs text-slate-500 mb-2"
-                                style={{ paddingLeft: '32px' }}
-                            >
-                                {monthLabels.map((label, i) => (
-                                    <span
-                                        key={i}
-                                        style={{
-                                            position: 'absolute',
-                                            left: `${32 + label.weekIndex * 15}px`,
-                                        }}
-                                    >
-                                        {label.month}
-                                    </span>
-                                ))}
-                            </div>
-
-                            <div className="flex gap-0 mt-5">
+                        <div className="w-full overflow-x-auto pb-4">
+                            <div className="min-w-[750px] w-full flex gap-4">
                                 {/* Day labels */}
-                                <div
-                                    className="flex flex-col text-xs text-slate-500 mr-2 shrink-0"
-                                    style={{ gap: '3px' }}
-                                >
+                                <div className="flex flex-col gap-[3px] pt-6 shrink-0 w-8">
                                     {DAYS_LABEL.map((day, i) => (
                                         <div
                                             key={i}
-                                            className="flex items-center justify-end"
-                                            style={{ height: '12px', width: '24px', fontSize: '10px' }}
+                                            className="flex-1 flex items-center justify-end text-[10px] text-slate-500"
                                         >
                                             {day}
                                         </div>
@@ -343,31 +321,39 @@ const GitHubActivity = ({ username = 'widyaanggara' }) => {
                                 </div>
 
                                 {/* Grid */}
-                                <div className="flex" style={{ gap: '3px' }}>
-                                    {weeks.map((week, weekIdx) => (
-                                        <div key={weekIdx} className="flex flex-col" style={{ gap: '3px' }}>
-                                            {week.map((day, dayIdx) => (
-                                                <div
-                                                    key={dayIdx}
-                                                    className={`rounded-sm transition-all duration-200 ${day.outsideYear ? 'opacity-30' : ''}`}
-                                                    style={{
-                                                        width: '12px',
-                                                        height: '12px',
-                                                        backgroundColor: day ? getColor(day.count) : 'transparent',
-                                                        cursor: day && !day.outsideYear ? 'pointer' : 'default',
-                                                        border: day ? '1px solid rgba(255,255,255,0.04)' : 'none',
-                                                    }}
-                                                    onMouseEnter={(e) => day && !day.outsideYear && handleMouseEnter(day, e)}
-                                                    onMouseLeave={handleMouseLeave}
-                                                />
-                                            ))}
-                                        </div>
-                                    ))}
+                                <div className="flex-1 flex gap-[3px]">
+                                    {weeks.map((week, weekIdx) => {
+                                        // Find month label for this week
+                                        const label = monthLabels.find(l => l.weekIndex === weekIdx);
+
+                                        return (
+                                            <div key={weekIdx} className="flex-1 flex flex-col gap-[3px] relative pt-6">
+                                                {/* Month Label */}
+                                                {label && (
+                                                    <span className="absolute top-0 left-0 text-xs text-slate-500 whitespace-nowrap">
+                                                        {label.month}
+                                                    </span>
+                                                )}
+
+                                                {/* Days */}
+                                                {week.map((day, dayIdx) => (
+                                                    <div
+                                                        key={dayIdx}
+                                                        className={`w-full aspect-square rounded-sm transition-all duration-200 ${day.outsideYear ? 'opacity-30' : ''}`}
+                                                        style={{
+                                                            backgroundColor: day ? getColor(day.count) : 'transparent',
+                                                            cursor: day && !day.outsideYear ? 'pointer' : 'default',
+                                                            border: day ? '1px solid rgba(255,255,255,0.04)' : 'none',
+                                                        }}
+                                                        onMouseEnter={(e) => day && !day.outsideYear && handleMouseEnter(day, e)}
+                                                        onMouseLeave={handleMouseLeave}
+                                                    />
+                                                ))}
+                                            </div>
+                                        );
+                                    })}
                                 </div>
                             </div>
-
-                            {/* Legend */}
-
                         </div>
                     )}
 
