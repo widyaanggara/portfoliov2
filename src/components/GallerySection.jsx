@@ -16,7 +16,7 @@ const galleryItems = [
     { id: 2, image: Gallery2, tagline: "Guest Speaker at Radio Broadcast" },
     { id: 3, image: Gallery3, tagline: "1st Place Digital Business Idea (IDEASI)" },
     { id: 4, image: Gallery4, tagline: "Gathering with Internship Team" },
-    { id: 5, image: Gallery5, tagline: "Gathering with Mandala Team" },
+    { id: 5, image: Gallery5, tagline: "Gathering after Innovillage Workshop" },
     { id: 6, image: Gallery6, tagline: "Pitching Top 5 Pilmapres Instiki" },
 ];
 
